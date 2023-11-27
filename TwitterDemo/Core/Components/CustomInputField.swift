@@ -8,11 +8,36 @@
 import SwiftUI
 
 struct CustomInputField: View {
+    let imageName: String
+    let placeholderText: String
+    let isPassword: Bool
+    @Binding var text: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Image(systemName: imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(Color(.darkGray))
+                if isPassword {
+                    SecureField(placeholderText, text: $text)
+                } else {
+                    TextField(placeholderText, text: $text)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                }
+            }
+            Divider()
+                .background(Color(.darkGray))
+        }
     }
 }
 
 #Preview {
-    CustomInputField()
+    CustomInputField(imageName: "envelope",
+                     placeholderText: "Email",
+                     isPassword: false,
+                     text: .constant(""))
 }

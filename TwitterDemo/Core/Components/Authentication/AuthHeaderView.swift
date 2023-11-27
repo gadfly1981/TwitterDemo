@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct AuthHeaderView: View {
+    let title1: String
+    let title2: String
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Spacer()
             }
-            Text("Hello.")
+            Text(title1)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
-            Text("Welcome Back")
+            Text(title2)
                 .font(.largeTitle)
                 .fontWeight(.semibold)
         }
@@ -30,5 +32,5 @@ struct AuthHeaderView: View {
 }
 
 #Preview {
-    AuthHeaderView()
+    AuthHeaderView(title1: "Hello.", title2: "Welcome Back")
 }
